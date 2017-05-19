@@ -40,15 +40,13 @@ class Entry
 	 *
 	 * @param string $id
 	 * @param Constructs\Text $title
-	 * @param Constructs\Text $content
 	 * @param \DateTimeInterface $updated
 	 * @param \DateTimeInterface|null $published
 	 */
-	public function __construct(string $id, Constructs\Text $title, Constructs\Text $content, \DateTimeInterface $updated, ?\DateTimeInterface $published = null)
+	public function __construct(string $id, Constructs\Text $title, \DateTimeInterface $updated, ?\DateTimeInterface $published = null)
 	{
 		$this->id = $id;
 		$this->title = $title;
-		$this->content = $content;
 		$this->updated = $updated;
 		$this->published = $published;
 	}
@@ -73,6 +71,28 @@ class Entry
 	public function getSummary(): ?Constructs\Text
 	{
 		return $this->summary;
+	}
+
+
+	/**
+	 * Set content.
+	 *
+	 * @param Constructs\Text $content
+	 */
+	public function setContent(Constructs\Text $content)
+	{
+		$this->content = $content;
+	}
+
+
+	/**
+	 * Get content.
+	 *
+	 * @return Constructs\Text|null
+	 */
+	public function getContent(): ?Constructs\Text
+	{
+		return $this->content;
 	}
 
 
@@ -106,17 +126,6 @@ class Entry
 	public function getTitle(): Constructs\Text
 	{
 		return $this->title;
-	}
-
-
-	/**
-	 * Get entry content.
-	 *
-	 * @return Constructs\Text
-	 */
-	public function getContent(): Constructs\Text
-	{
-		return $this->content;
 	}
 
 

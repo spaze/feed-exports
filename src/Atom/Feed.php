@@ -186,7 +186,9 @@ class Feed
 				$this->addElementLink($link);
 			}
 		}
-		$this->addConstructText('content', $entry->getContent());
+		if ($entry->getContent()) {
+			$this->addConstructText('content', $entry->getContent());
+		}
 		$this->writer->endElement();
 	}
 
