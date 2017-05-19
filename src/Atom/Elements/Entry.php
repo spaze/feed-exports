@@ -28,6 +28,9 @@ class Entry
 	/** @var \DateTimeInterface */
 	protected $updated;
 
+	/** @var Constructs\Text */
+	protected $summary;
+
 	/** @var Link[] */
 	protected $links = [];
 
@@ -48,6 +51,28 @@ class Entry
 		$this->content = $content;
 		$this->updated = $updated;
 		$this->published = $published;
+	}
+
+
+	/**
+	 * Set summary.
+	 *
+	 * @param Constructs\Text $summary
+	 */
+	public function setSummary(Constructs\Text $summary)
+	{
+		$this->summary = $summary;
+	}
+
+
+	/**
+	 * Get summary.
+	 *
+	 * @return Constructs\Text|null
+	 */
+	public function getSummary(): ?Constructs\Text
+	{
+		return $this->summary;
 	}
 
 

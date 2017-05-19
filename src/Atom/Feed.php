@@ -177,6 +177,9 @@ class Feed
 		$this->writer->writeElement('id', $entry->getId());
 		$this->writer->writeElement('published', $entry->getPublished()->format(\DateTime::ATOM));
 		$this->writer->writeElement('updated', $entry->getUpdated()->format(\DateTime::ATOM));
+		if ($entry->getSummary()) {
+			$this->addConstructText('summary', $entry->getSummary());
+		}
 		$this->addConstructText('title', $entry->getTitle());
 		foreach ($entry->getLinks() as $links) {
 			foreach ($links as $link) {
