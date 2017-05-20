@@ -84,6 +84,17 @@ class Feed
 
 
 	/**
+	 * Get updated time.
+	 *
+	 * @return \DateTimeInterface|null $updated
+	 */
+	public function getUpdated(): ?\DateTimeInterface
+	{
+		return $this->updated;
+	}
+
+
+	/**
 	 * Add a link.
 	 *
 	 * @param Elements\Link $link
