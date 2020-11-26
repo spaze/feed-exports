@@ -15,5 +15,14 @@
 	},
 	"autoload": {
 		"psr-4": {"Spaze\\Exports\\": "src"}
+	},
+	"require-dev": {
+		"nette/tester": "^2.3"
+	},
+	"scripts": {
+		"tester": "vendor/nette/tester/src/tester -c tests/php-unix.ini --colors 1 tests/",
+		"test": [
+			"@tester"
+		]
 	}
 }
