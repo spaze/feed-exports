@@ -35,14 +35,6 @@ class Entry
 	protected $links = [];
 
 
-	/**
-	 * Entry constructor.
-	 *
-	 * @param string $id
-	 * @param Constructs\Text $title
-	 * @param \DateTimeInterface $updated
-	 * @param \DateTimeInterface|null $published
-	 */
 	public function __construct(string $id, Constructs\Text $title, \DateTimeInterface $updated, ?\DateTimeInterface $published = null)
 	{
 		$this->id = $id;
@@ -52,110 +44,60 @@ class Entry
 	}
 
 
-	/**
-	 * Set summary.
-	 *
-	 * @param Constructs\Text $summary
-	 */
 	public function setSummary(Constructs\Text $summary)
 	{
 		$this->summary = $summary;
 	}
 
 
-	/**
-	 * Get summary.
-	 *
-	 * @return Constructs\Text|null
-	 */
 	public function getSummary(): ?Constructs\Text
 	{
 		return $this->summary;
 	}
 
 
-	/**
-	 * Set content.
-	 *
-	 * @param Constructs\Text $content
-	 */
-	public function setContent(Constructs\Text $content)
+	public function setContent(Constructs\Text $content): void
 	{
 		$this->content = $content;
 	}
 
 
-	/**
-	 * Get content.
-	 *
-	 * @return Constructs\Text|null
-	 */
 	public function getContent(): ?Constructs\Text
 	{
 		return $this->content;
 	}
 
 
-	/**
-	 * Add link.
-	 *
-	 * @param Link $link
-	 */
-	public function addLink(Link $link)
+	public function addLink(Link $link): void
 	{
 		$this->links[$link->getRel()][] = $link;
 	}
 
 
-	/**
-	 * Get entry id.
-	 *
-	 * @return string
-	 */
 	public function getId(): string
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * Get entry title.
-	 *
-	 * @return Constructs\Text
-	 */
 	public function getTitle(): Constructs\Text
 	{
 		return $this->title;
 	}
 
 
-	/**
-	 * Get published date.
-	 *
-	 * @return \DateTimeInterface
-	 */
 	public function getPublished(): \DateTimeInterface
 	{
 		return $this->published;
 	}
 
 
-	/**
-	 * Get updated date.
-	 *
-	 * @return \DateTimeInterface
-	 */
 	public function getUpdated(): \DateTimeInterface
 	{
 		return $this->updated;
 	}
 
 
-	/**
-	 * Get updated date.
-	 *
-	 * @return Link[]
-	 */
 	public function getLinks(): array
 	{
 		return $this->links;

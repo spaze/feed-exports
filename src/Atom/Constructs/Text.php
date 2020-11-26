@@ -24,12 +24,6 @@ class Text
 	protected $type;
 
 
-	/**
-	 * Text constructor.
-	 *
-	 * @param string $text
-	 * @param string|null $type
-	 */
 	public function __construct(string $text, ?string $type = null)
 	{
 		$this->text = $text;
@@ -37,22 +31,12 @@ class Text
 	}
 
 
-	/**
-	 * Get text.
-	 *
-	 * @return string
-	 */
 	public function getText(): string
 	{
 		return $this->text;
 	}
 
 
-	/**
-	 * Get text type.
-	 *
-	 * @return string|null
-	 */
 	public function getType(): ?string
 	{
 		return $this->type;

@@ -36,12 +36,6 @@ class Feed
 	protected $entries = [];
 
 
-	/**
-	 * Feed constructor.
-	 * @param string $id
-	 * @param string $title
-	 * @param \DateTimeInterface|null $updated
-	 */
 	public function __construct(string $id, string $title, ?\DateTimeInterface $updated = null)
 	{
 		$this->id = $id;
@@ -61,64 +55,36 @@ class Feed
 	}
 
 
-	/**
-	 * Set author.
-	 *
-	 * @param Constructs\Person $author
-	 */
 	public function setAuthor(Constructs\Person $author): void
 	{
 		$this->author = $author;
 	}
 
 
-	/**
-	 * Set updated time.
-	 *
-	 * @param \DateTimeInterface $updated
-	 */
 	public function setUpdated(\DateTimeInterface $updated): void
 	{
 		$this->updated = $updated;
 	}
 
 
-	/**
-	 * Get updated time.
-	 *
-	 * @return \DateTimeInterface|null $updated
-	 */
 	public function getUpdated(): ?\DateTimeInterface
 	{
 		return $this->updated;
 	}
 
 
-	/**
-	 * Add a link.
-	 *
-	 * @param Elements\Link $link
-	 */
-	public function addLink(Elements\Link $link)
+	public function addLink(Elements\Link $link): void
 	{
 		$this->links[$link->getRel()][] = $link;
 	}
 
 
-	/**
-	 * Add an entry.
-	 *
-	 * @param Elements\Entry $entry
-	 */
-	public function addEntry(Elements\Entry $entry)
+	public function addEntry(Elements\Entry $entry): void
 	{
 		$this->entries[] = $entry;
 	}
 
 
-	/**
-	 * Add author element.
-	 */
 	private function addElementAuthor(): void
 	{
 		$this->writer->startElement('author');
@@ -133,10 +99,6 @@ class Feed
 	}
 
 
-	/**
-	 * Add link element.
-	 * @param Elements\Link $link
-	 */
 	private function addElementLink(Elements\Link $link): void
 	{
 		$this->writer->startElement('link');
@@ -160,13 +122,7 @@ class Feed
 	}
 
 
-	/**
-	 * Add text construct.
-	 *
-	 * @param string $element
-	 * @param Constructs\Text $text
-	 */
-	private function addConstructText(string $element, Constructs\Text $text)
+	private function addConstructText(string $element, Constructs\Text $text): void
 	{
 		$this->writer->startElement($element);
 		if ($text->getType()) {
@@ -177,11 +133,6 @@ class Feed
 	}
 
 
-	/**
-	 * Add entry element.
-	 *
-	 * @param Elements\Entry $entry
-	 */
 	private function addElementEntry(Elements\Entry $entry): void
 	{
 		$this->writer->startElement('entry');
@@ -204,12 +155,7 @@ class Feed
 	}
 
 
-	/**
-	 * Get resulting XML.
-	 *
-	 * @return string
-	 */
-	private function getXml()
+	private function getXml(): string
 	{
 		$this->writer = new \XMLWriter();
 		$this->writer->openMemory();
@@ -232,12 +178,7 @@ class Feed
 	}
 
 
-	/**
-	 * Convert to string.
-	 *
-	 * @return string
-	 */
-	public function __toString()
+	public function __toString(): string
 	{
 		if (!$this->xml) {
 			$this->xml = $this->getXml();
