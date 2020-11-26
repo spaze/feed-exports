@@ -22,7 +22,7 @@ class Entry
 	/** @var Constructs\Text */
 	protected $content;
 
-	/** @var \DateTimeInterface */
+	/** @var \DateTimeInterface|null */
 	protected $published;
 
 	/** @var \DateTimeInterface */
@@ -31,7 +31,7 @@ class Entry
 	/** @var Constructs\Text */
 	protected $summary;
 
-	/** @var Link[] */
+	/** @var array<string, array<integer, Link>> */
 	protected $links = [];
 
 
@@ -44,7 +44,7 @@ class Entry
 	}
 
 
-	public function setSummary(Constructs\Text $summary)
+	public function setSummary(Constructs\Text $summary): void
 	{
 		$this->summary = $summary;
 	}
@@ -86,7 +86,7 @@ class Entry
 	}
 
 
-	public function getPublished(): \DateTimeInterface
+	public function getPublished(): ?\DateTimeInterface
 	{
 		return $this->published;
 	}
@@ -98,6 +98,9 @@ class Entry
 	}
 
 
+	/**
+	 * @return array<string, array<integer, Link>>
+	 */
 	public function getLinks(): array
 	{
 		return $this->links;

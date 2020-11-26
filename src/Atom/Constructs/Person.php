@@ -14,10 +14,10 @@ class Person
 	/** @var string */
 	protected $name;
 
-	/** @var string */
+	/** @var string|null */
 	protected $email;
 
-	/** @var string */
+	/** @var string|null */
 	protected $uri;
 
 

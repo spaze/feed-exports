@@ -20,7 +20,7 @@ class Text
 	/** @var string */
 	protected $text;
 
-	/** @var string */
+	/** @var string|null */
 	protected $type;
 
 

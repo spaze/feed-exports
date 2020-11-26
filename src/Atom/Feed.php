@@ -23,10 +23,10 @@ class Feed
 	/** @var string */
 	protected $title;
 
-	/** @var \DateTimeInterface */
+	/** @var \DateTimeInterface|null */
 	protected $updated;
 
-	/** @var Elements\Link[] */
+	/** @var array<string, array<integer, Elements\Link>> */
 	protected $links = [];
 
 	/** @var Constructs\Person */
@@ -103,20 +103,20 @@ class Feed
 	{
 		$this->writer->startElement('link');
 		$this->writer->writeAttribute('href', $link->getHref());
-		if ($link->getRel()) {
+		if ($link->getRel() !== null) {
 			$this->writer->writeAttribute('rel', $link->getRel());
 		}
-		if ($link->getType()) {
+		if ($link->getType() !== null) {
 			$this->writer->writeAttribute('type', $link->getType());
 		}
-		if ($link->getHreflang()) {
+		if ($link->getHreflang() !== null) {
 			$this->writer->writeAttribute('hreflang', $link->getHreflang());
 		}
-		if ($link->getTitle()) {
+		if ($link->getTitle() !== null) {
 			$this->writer->writeAttribute('title', $link->getTitle());
 		}
-		if ($link->getLength()) {
-			$this->writer->writeAttribute('length', $link->getLength());
+		if ($link->getLength() !== null) {
+			$this->writer->writeAttribute('length', (string)$link->getLength());
 		}
 		$this->writer->endElement();
 	}
@@ -125,7 +125,7 @@ class Feed
 	private function addConstructText(string $element, Constructs\Text $text): void
 	{
 		$this->writer->startElement($element);
-		if ($text->getType()) {
+		if ($text->getType() !== null) {
 			$this->writer->writeAttribute('type', $text->getType());
 		}
 		$this->writer->text($text->getText());
@@ -137,9 +137,11 @@ class Feed
 	{
 		$this->writer->startElement('entry');
 		$this->writer->writeElement('id', $entry->getId());
-		$this->writer->writeElement('published', $entry->getPublished()->format(\DateTime::ATOM));
+		if ($entry->getPublished() !== null) {
+			$this->writer->writeElement('published', $entry->getPublished()->format(\DateTime::ATOM));
+		}
 		$this->writer->writeElement('updated', $entry->getUpdated()->format(\DateTime::ATOM));
-		if ($entry->getSummary()) {
+		if ($entry->getSummary() !== null) {
 			$this->addConstructText('summary', $entry->getSummary());
 		}
 		$this->addConstructText('title', $entry->getTitle());
@@ -148,7 +150,7 @@ class Feed
 				$this->addElementLink($link);
 			}
 		}
-		if ($entry->getContent()) {
+		if ($entry->getContent() !== null) {
 			$this->addConstructText('content', $entry->getContent());
 		}
 		$this->writer->endElement();
@@ -163,7 +165,9 @@ class Feed
 		$this->writer->startElementNs(null, 'feed', 'http://www.w3.org/2005/Atom');
 		$this->writer->writeElement('id', $this->id);
 		$this->writer->writeElement('title', $this->title);
-		$this->writer->writeElement('updated', $this->updated->format(\DateTime::ATOM));
+		if ($this->updated !== null) {
+			$this->writer->writeElement('updated', $this->updated->format(\DateTime::ATOM));
+		}
 		$this->addElementAuthor();
 		foreach ($this->links as $links) {
 			foreach ($links as $link) {
