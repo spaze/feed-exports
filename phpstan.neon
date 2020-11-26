@@ -2,9 +2,3 @@ parameters:
 	level: max
 	paths:
 		- src
-	ignoreErrors:
-		-
-			# https://github.com/phpstan/phpstan-src/pull/383
-			message: '#Parameter \#1 \$prefix of method XMLWriter::startElementNs\(\) expects string, null given#'
-			path: src/Atom/Feed.php
-			count: 1
