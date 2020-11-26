@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="FeedExports">
+	<arg name="extensions" value="php,phpt"/>
+	<arg name="cache"/>
+	<arg name="colors"/>
+	<arg value="s"/>
+	<arg value="p"/>
+	<rule ref="vendor/spaze/coding-standard/src/ruleset.xml"/>
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>tests/</exclude-pattern>  <!-- PHPStorm's @noinspection must be on the first line, before declare(strict_types = 1) -->
+	</rule>
+</ruleset>
