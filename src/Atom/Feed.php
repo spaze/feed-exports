@@ -26,7 +26,7 @@ class Feed
 	/** @var \DateTimeInterface|null */
 	protected $updated;
 
-	/** @var array<string, array<integer, Elements\Link>> */
+	/** @var array<string, array<int, Elements\Link>> */
 	protected $links = [];
 
 	/** @var Constructs\Person */

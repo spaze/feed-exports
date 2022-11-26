@@ -3,10 +3,10 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom;
 
-use Spaze\Exports\Atom\Feed;
 use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Elements\Entry;
+use Spaze\Exports\Atom\Feed;
 use Tester\Assert;
 use Tester\TestCase;
 
@@ -28,7 +28,7 @@ class FeedTest extends TestCase
 			'https://href/1',
 			new Text('<em>title-1</em>', Text::TYPE_HTML),
 			new \DateTimeImmutable('2019-12-20 12:20:20 Europe/Prague'),
-			new \DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague')
+			new \DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague'),
 		);
 		$entry->setContent(new Text('<strong>content-1</strong>'));
 		$feed->addEntry($entry);
@@ -37,7 +37,7 @@ class FeedTest extends TestCase
 			'https://href/2',
 			new Text('<em>title-2</em>', Text::TYPE_HTML),
 			new \DateTimeImmutable('2018-12-20 12:20:20 Europe/Prague'),
-			new \DateTimeImmutable('2018-12-16 12:20:20 Europe/Prague')
+			new \DateTimeImmutable('2018-12-16 12:20:20 Europe/Prague'),
 		);
 		$entry->setContent(new Text('<strong>content-2</strong>'));
 		$feed->addEntry($entry);
