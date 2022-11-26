@@ -31,7 +31,7 @@ class Entry
 	/** @var Constructs\Text */
 	protected $summary;
 
-	/** @var array<string, array<integer, Link>> */
+	/** @var array<string, array<int, Link>> */
 	protected $links = [];
 
 
@@ -99,7 +99,7 @@ class Entry
 
 
 	/**
-	 * @return array<string, array<integer, Link>>
+	 * @return array<string, array<int, Link>>
 	 */
 	public function getLinks(): array
 	{
