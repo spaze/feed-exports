@@ -24,6 +24,7 @@
 		"phpstan/phpstan": "^1.9"
 	},
 	"scripts": {
+		"cs-fix": "vendor/bin/phpcbf src/ tests/",
 		"lint": "vendor/bin/parallel-lint --colors src/ tests/",
 		"phpcs": "vendor/bin/phpcs src/ tests/",
 		"phpstan": "vendor/phpstan/phpstan/phpstan --ansi analyse --configuration phpstan.neon",
