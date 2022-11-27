@@ -32,7 +32,7 @@ class Link
 	/** @var string|null */
 	protected $title;
 
-	/** @var integer|null */
+	/** @var int|null */
 	protected $length;
 
 
