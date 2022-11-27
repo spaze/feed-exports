@@ -11,6 +11,7 @@
 	],
 	"require": {
 		"php": "^8.0",
+		"ext-xmlwriter": "*",
 		"nette/application": "^3.1"
 	},
 	"autoload": {
