@@ -3,7 +3,8 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Elements;
 
-use Spaze\Exports\Atom\Constructs;
+use DateTimeInterface;
+use Spaze\Exports\Atom\Constructs\Text;
 
 /**
  * Atom entry element.
@@ -13,56 +14,42 @@ use Spaze\Exports\Atom\Constructs;
 class Entry
 {
 
-	/** @var string */
-	protected $id;
+	private ?Text $content = null;
 
-	/** @var Constructs\Text */
-	protected $title;
-
-	/** @var Constructs\Text */
-	protected $content;
-
-	/** @var \DateTimeInterface|null */
-	protected $published;
-
-	/** @var \DateTimeInterface */
-	protected $updated;
-
-	/** @var Constructs\Text */
-	protected $summary;
+	private ?Text $summary = null;
 
 	/** @var array<string, array<int, Link>> */
-	protected $links = [];
+	private array $links = [];
 
 
-	public function __construct(string $id, Constructs\Text $title, \DateTimeInterface $updated, ?\DateTimeInterface $published = null)
-	{
-		$this->id = $id;
-		$this->title = $title;
-		$this->updated = $updated;
-		$this->published = $published;
+	public function __construct(
+		private string $id,
+		private Text $title,
+		private DateTimeInterface $updated,
+		private ?DateTimeInterface $published = null,
+	) {
 	}
 
 
-	public function setSummary(Constructs\Text $summary): void
+	public function setSummary(Text $summary): void
 	{
 		$this->summary = $summary;
 	}
 
 
-	public function getSummary(): ?Constructs\Text
+	public function getSummary(): ?Text
 	{
 		return $this->summary;
 	}
 
 
-	public function setContent(Constructs\Text $content): void
+	public function setContent(Text $content): void
 	{
 		$this->content = $content;
 	}
 
 
-	public function getContent(): ?Constructs\Text
+	public function getContent(): ?Text
 	{
 		return $this->content;
 	}
@@ -80,19 +67,19 @@ class Entry
 	}
 
 
-	public function getTitle(): Constructs\Text
+	public function getTitle(): Text
 	{
 		return $this->title;
 	}
 
 
-	public function getPublished(): ?\DateTimeInterface
+	public function getPublished(): ?DateTimeInterface
 	{
 		return $this->published;
 	}
 
 
-	public function getUpdated(): \DateTimeInterface
+	public function getUpdated(): DateTimeInterface
 	{
 		return $this->updated;
 	}
