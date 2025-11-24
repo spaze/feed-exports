@@ -5,7 +5,9 @@ namespace Spaze\Exports\Atom;
 
 use DateTimeInterface;
 use Spaze\Exports\Atom\Constructs\Person;
+use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Elements\Entry;
+use Spaze\Exports\Atom\Elements\Link;
 use XMLWriter;
 
 /**
@@ -20,12 +22,12 @@ class Feed
 
 	private XMLWriter $writer;
 
-	/** @var array<string, array<int, Elements\Link>> */
+	/** @var array<string, list<Link>> */
 	private array $links = [];
 
 	private Person $author;
 
-	/** @var Entry[] */
+	/** @var list<Entry> */
 	private array $entries = [];
 
 
@@ -42,11 +44,11 @@ class Feed
 	 */
 	public function setLinkSelf(string $href): void
 	{
-		$this->addLink(new Elements\Link($href, Elements\Link::REL_SELF));
+		$this->addLink(new Link($href, Link::REL_SELF));
 	}
 
 
-	public function setAuthor(Constructs\Person $author): void
+	public function setAuthor(Person $author): void
 	{
 		$this->author = $author;
 	}
@@ -64,13 +66,13 @@ class Feed
 	}
 
 
-	public function addLink(Elements\Link $link): void
+	public function addLink(Link $link): void
 	{
 		$this->links[$link->getRel() ?? ''][] = $link;
 	}
 
 
-	public function addEntry(Elements\Entry $entry): void
+	public function addEntry(Entry $entry): void
 	{
 		$this->entries[] = $entry;
 	}
@@ -90,7 +92,7 @@ class Feed
 	}
 
 
-	private function addElementLink(Elements\Link $link): void
+	private function addElementLink(Link $link): void
 	{
 		$this->writer->startElement('link');
 		$this->writer->writeAttribute('href', $link->getHref());
@@ -113,7 +115,7 @@ class Feed
 	}
 
 
-	private function addConstructText(string $element, Constructs\Text $text): void
+	private function addConstructText(string $element, Text $text): void
 	{
 		$this->writer->startElement($element);
 		if ($text->getType() !== null) {
@@ -124,7 +126,7 @@ class Feed
 	}
 
 
-	private function addElementEntry(Elements\Entry $entry): void
+	private function addElementEntry(Entry $entry): void
 	{
 		$this->writer->startElement('entry');
 		$this->writer->writeElement('id', $entry->getId());
