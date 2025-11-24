@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Bridges\Nette\Atom;
 
-use Nette\Application\Response as NetteResponse;
+use Nette\Application\Response;
 use Nette\Http\IRequest;
 use Nette\Http\IResponse;
 use Spaze\Exports\Atom\Feed;
@@ -14,7 +14,7 @@ use Spaze\Exports\Bridges\Nette\AtomResponseContentType;
  *
  * @author Michal Špaček
  */
-class Response implements NetteResponse
+class AtomResponse implements Response
 {
 
 	public function __construct(
