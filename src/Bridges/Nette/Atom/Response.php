@@ -7,6 +7,7 @@ use Nette\Application\Response as NetteResponse;
 use Nette\Http\IRequest;
 use Nette\Http\IResponse;
 use Spaze\Exports\Atom\Feed;
+use Spaze\Exports\Bridges\Nette\AtomResponseContentType;
 
 /**
  * Atom export response.
@@ -16,9 +17,6 @@ use Spaze\Exports\Atom\Feed;
 class Response implements NetteResponse
 {
 
-	public const string CONTENT_TYPE = 'application/atom+xml';
-
-
 	public function __construct(
 		private Feed $feed,
 	) {
@@ -27,7 +25,7 @@ class Response implements NetteResponse
 
 	public function send(IRequest $httpRequest, IResponse $httpResponse): void
 	{
-		$httpResponse->setContentType('application/atom+xml', 'utf-8');
+		$httpResponse->setContentType(AtomResponseContentType::ApplicationAtomXml->value, 'utf-8');
 		$feed = (string)$this->feed;
 		$httpResponse->setHeader('Content-Length', (string)strlen($feed));
 		echo $feed;
