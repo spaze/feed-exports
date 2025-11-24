@@ -26,7 +26,7 @@ class Feed
 	/** @var array<string, list<Link>> */
 	private array $links = [];
 
-	private Person $author;
+	private ?Person $author = null;
 
 	/** @var list<Entry> */
 	private array $entries = [];
@@ -81,6 +81,10 @@ class Feed
 
 	private function addElementAuthor(): void
 	{
+		if ($this->author === null) {
+			return;
+		}
+
 		$this->writer->startElement('author');
 		$this->writer->writeElement('name', $this->author->getName());
 		if ($this->author->getEmail() !== null) {
