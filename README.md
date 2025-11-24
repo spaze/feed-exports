@@ -8,7 +8,7 @@ use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Constructs\TextType;
 use Spaze\Exports\Atom\Elements\Entry;
-use Spaze\Exports\Atom\Feed;
+use Spaze\Exports\Atom\AtomFeed;
 use Spaze\Exports\Bridges\Nette\AtomResponse;
 
 // [ ... ]
@@ -17,7 +17,7 @@ use Spaze\Exports\Bridges\Nette\AtomResponse;
     {
         $now = new \DateTimeImmutable('2020-10-20 10:20:20 Europe/Prague');
 
-        $feed = new Feed('https://url', 'Feed Title');
+        $feed = new AtomFeed('https://url', 'Feed Title');
         $feed->setLinkSelf('https://url');
         $feed->setUpdated($now);
         $feed->setAuthor(new Person('foo bar'));
