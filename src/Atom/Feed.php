@@ -8,6 +8,7 @@ use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Elements\Entry;
 use Spaze\Exports\Atom\Elements\Link;
+use Spaze\Exports\Atom\Elements\LinkRel;
 use XMLWriter;
 
 /**
@@ -44,7 +45,7 @@ class Feed
 	 */
 	public function setLinkSelf(string $href): void
 	{
-		$this->addLink(new Link($href, Link::REL_SELF));
+		$this->addLink(new Link($href, LinkRel::Self));
 	}
 
 
@@ -68,7 +69,7 @@ class Feed
 
 	public function addLink(Link $link): void
 	{
-		$this->links[$link->getRel() ?? ''][] = $link;
+		$this->links[$link->getRel()->value ?? ''][] = $link;
 	}
 
 
@@ -97,7 +98,7 @@ class Feed
 		$this->writer->startElement('link');
 		$this->writer->writeAttribute('href', $link->getHref());
 		if ($link->getRel() !== null) {
-			$this->writer->writeAttribute('rel', $link->getRel());
+			$this->writer->writeAttribute('rel', $link->getRel()->value);
 		}
 		if ($link->getType() !== null) {
 			$this->writer->writeAttribute('type', $link->getType());
@@ -119,7 +120,7 @@ class Feed
 	{
 		$this->writer->startElement($element);
 		if ($text->getType() !== null) {
-			$this->writer->writeAttribute('type', $text->getType());
+			$this->writer->writeAttribute('type', $text->getType()->value);
 		}
 		$this->writer->text($text->getText());
 		$this->writer->endElement();

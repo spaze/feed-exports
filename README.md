@@ -23,7 +23,7 @@ use Spaze\Exports\Bridges\Nette\AtomResponse;
 
         $entry = new Entry(
             'https://href/1',
-            new Text('<em>title-1</em>', Text::TYPE_HTML),
+            new Text('<em>title-1</em>', TextType::Html),
             new \DateTimeImmutable('2019-12-20 12:20:20 Europe/Prague'),
             new \DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague')
         );
@@ -32,7 +32,7 @@ use Spaze\Exports\Bridges\Nette\AtomResponse;
 
         $entry = new Entry(
             'https://href/2',
-            new Text('title-2', Text::TYPE_TEXT),
+            new Text('title-2', TextType::Text),
             new \DateTimeImmutable('2018-12-20 12:20:20 Europe/Prague'),
             new \DateTimeImmutable('2018-12-16 12:20:20 Europe/Prague')
         );
