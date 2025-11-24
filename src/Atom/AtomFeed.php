@@ -11,11 +11,6 @@ use Spaze\Exports\Atom\Elements\Link;
 use Spaze\Exports\Atom\Elements\LinkRel;
 use XMLWriter;
 
-/**
- * Atom feed.
- *
- * @author Michal Špaček
- */
 class AtomFeed
 {
 

@@ -3,11 +3,6 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Elements;
 
-/**
- * Atom link element.
- *
- * @author Michal Špaček
- */
 class Link
 {
 
