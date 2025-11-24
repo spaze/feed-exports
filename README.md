@@ -8,7 +8,7 @@ use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Elements\Entry;
 use Spaze\Exports\Atom\Feed;
-use Spaze\Exports\Bridges\Nette\Atom\Response;
+use Spaze\Exports\Bridges\Nette\AtomResponse;
 
 // [ ... ]
 
@@ -39,7 +39,7 @@ use Spaze\Exports\Bridges\Nette\Atom\Response;
         $entry->setContent(new Text('other <strong>content-2</strong>'));
         $feed->addEntry($entry);
 
-        $this->sendResponse(new Response($feed));
+        $this->sendResponse(new AtomResponse($feed));
     }
 
 // [ ... ]
