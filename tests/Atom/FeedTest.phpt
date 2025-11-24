@@ -26,7 +26,7 @@ class FeedTest extends TestCase
 		$feed = new Feed('https://url', 'Feed Title');
 		$feed->setLinkSelf('https://url');
 		$feed->setUpdated($now);
-		$feed->setAuthor(new Person('foo bar'));
+		$feed->setAuthor(new Person('foo bar', 'foo@bar.example', 'https://foo.bar.example/'));
 		$feed->addLink(new Link('https://feed.test/1'));
 		$feed->addLink(new Link('https://feed.test/2', LinkRel::Alternate));
 		$feed->addLink(new Link('https://feed.test/3'));
@@ -53,6 +53,13 @@ class FeedTest extends TestCase
 		$feed->addEntry($entry);
 
 		Assert::same(file_get_contents(__DIR__ . '/feed.xml'), (string)$feed);
+	}
+
+
+	public function testToStringEmptyFeed(): void
+	{
+		$feed = new Feed('', '');
+		Assert::same(file_get_contents(__DIR__ . '/feed-empty.xml'), (string)$feed);
 	}
 
 }

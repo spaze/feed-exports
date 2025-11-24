@@ -26,7 +26,7 @@ class Feed
 	/** @var array<string, list<Link>> */
 	private array $links = [];
 
-	private Person $author;
+	private ?Person $author = null;
 
 	/** @var list<Entry> */
 	private array $entries = [];
@@ -81,12 +81,16 @@ class Feed
 
 	private function addElementAuthor(): void
 	{
+		if ($this->author === null) {
+			return;
+		}
+
 		$this->writer->startElement('author');
 		$this->writer->writeElement('name', $this->author->getName());
-		if ($this->author->getEmail()) {
+		if ($this->author->getEmail() !== null) {
 			$this->writer->writeElement('email', $this->author->getEmail());
 		}
-		if ($this->author->getUri()) {
+		if ($this->author->getUri() !== null) {
 			$this->writer->writeElement('uri', $this->author->getUri());
 		}
 		$this->writer->endElement();
@@ -178,7 +182,7 @@ class Feed
 
 	public function __toString(): string
 	{
-		if (!$this->xml) {
+		if ($this->xml === null) {
 			$this->xml = $this->getXml();
 		}
 		return $this->xml;

@@ -2,3 +2,11 @@ parameters:
 	level: max
 	paths:
 		- src
+		- tests
+	fileExtensions:
+		- php
+		- phpt
+
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
