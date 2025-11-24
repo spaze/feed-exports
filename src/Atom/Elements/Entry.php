@@ -18,7 +18,7 @@ class Entry
 
 	private ?Text $summary = null;
 
-	/** @var array<string, array<int, Link>> */
+	/** @var array<string, list<Link>> */
 	private array $links = [];
 
 
@@ -86,7 +86,7 @@ class Entry
 
 
 	/**
-	 * @return array<string, array<int, Link>>
+	 * @return array<string, list<Link>>
 	 */
 	public function getLinks(): array
 	{

@@ -20,12 +20,12 @@ class Feed
 
 	private XMLWriter $writer;
 
-	/** @var array<string, array<int, Elements\Link>> */
+	/** @var array<string, list<Elements\Link>> */
 	private array $links = [];
 
 	private Person $author;
 
-	/** @var Entry[] */
+	/** @var list<Entry> */
 	private array $entries = [];
 
 
