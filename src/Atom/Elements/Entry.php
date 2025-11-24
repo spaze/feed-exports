@@ -57,7 +57,7 @@ class Entry
 
 	public function addLink(Link $link): void
 	{
-		$this->links[$link->getRel()][] = $link;
+		$this->links[$link->getRel() ?? ''][] = $link;
 	}
 
 

@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
 use Spaze\Exports\Atom\Elements\Entry;
+use Spaze\Exports\Atom\Elements\Link;
 use Tester\Assert;
 use Tester\TestCase;
 
@@ -24,6 +25,9 @@ class FeedTest extends TestCase
 		$feed->setLinkSelf('https://url');
 		$feed->setUpdated($now);
 		$feed->setAuthor(new Person('foo bar'));
+		$feed->addLink(new Link('https://feed.test/1'));
+		$feed->addLink(new Link('https://feed.test/2', 'some-rel'));
+		$feed->addLink(new Link('https://feed.test/3'));
 
 		$entry = new Entry(
 			'https://href/1',
@@ -32,6 +36,9 @@ class FeedTest extends TestCase
 			new DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague'),
 		);
 		$entry->setContent(new Text('<strong>content-1</strong>'));
+		$entry->addLink(new Link('https://entry.test/1'));
+		$entry->addLink(new Link('https://entry.test/2', 'entry-rel'));
+		$entry->addLink(new Link('https://entry.test/3'));
 		$feed->addEntry($entry);
 
 		$entry = new Entry(
