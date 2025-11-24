@@ -6,11 +6,6 @@ namespace Spaze\Exports\Atom\Elements;
 use DateTimeInterface;
 use Spaze\Exports\Atom\Constructs\Text;
 
-/**
- * Atom entry element.
- *
- * @author Michal Špaček
- */
 class Entry
 {
 

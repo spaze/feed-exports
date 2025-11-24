@@ -9,11 +9,6 @@ use Nette\Http\IResponse;
 use Spaze\Exports\Atom\AtomFeed;
 use Spaze\Exports\Atom\AtomResponseContentType;
 
-/**
- * Atom export response.
- *
- * @author Michal Špaček
- */
 class AtomResponse implements Response
 {
 

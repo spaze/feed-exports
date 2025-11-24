@@ -3,11 +3,6 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Constructs;
 
-/**
- * Atom text construct.
- *
- * @author Michal Špaček
- */
 class Text
 {
 
