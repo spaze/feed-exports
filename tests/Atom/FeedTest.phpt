@@ -6,8 +6,10 @@ namespace Spaze\Exports\Atom;
 use DateTimeImmutable;
 use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
+use Spaze\Exports\Atom\Constructs\TextType;
 use Spaze\Exports\Atom\Elements\Entry;
 use Spaze\Exports\Atom\Elements\Link;
+use Spaze\Exports\Atom\Elements\LinkRel;
 use Tester\Assert;
 use Tester\TestCase;
 
@@ -26,24 +28,24 @@ class FeedTest extends TestCase
 		$feed->setUpdated($now);
 		$feed->setAuthor(new Person('foo bar'));
 		$feed->addLink(new Link('https://feed.test/1'));
-		$feed->addLink(new Link('https://feed.test/2', 'some-rel'));
+		$feed->addLink(new Link('https://feed.test/2', LinkRel::Alternate));
 		$feed->addLink(new Link('https://feed.test/3'));
 
 		$entry = new Entry(
 			'https://href/1',
-			new Text('<em>title-1</em>', Text::TYPE_HTML),
+			new Text('<em>title-1</em>', TextType::Html),
 			new DateTimeImmutable('2019-12-20 12:20:20 Europe/Prague'),
 			new DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague'),
 		);
 		$entry->setContent(new Text('<strong>content-1</strong>'));
 		$entry->addLink(new Link('https://entry.test/1'));
-		$entry->addLink(new Link('https://entry.test/2', 'entry-rel'));
+		$entry->addLink(new Link('https://entry.test/2', LinkRel::Alternate));
 		$entry->addLink(new Link('https://entry.test/3'));
 		$feed->addEntry($entry);
 
 		$entry = new Entry(
 			'https://href/2',
-			new Text('<em>title-2</em>', Text::TYPE_HTML),
+			new Text('<em>title-2</em>', TextType::Html),
 			new DateTimeImmutable('2018-12-20 12:20:20 Europe/Prague'),
 			new DateTimeImmutable('2018-12-16 12:20:20 Europe/Prague'),
 		);

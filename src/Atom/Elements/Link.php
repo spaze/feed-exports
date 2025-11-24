@@ -11,16 +11,12 @@ namespace Spaze\Exports\Atom\Elements;
 class Link
 {
 
-	public const string REL_SELF = 'self';
-	public const string REL_ALTERNATE = 'alternate';
-
-
 	/**
 	 * @param int|null $length An advisory length of the linked content in octets
 	 */
 	public function __construct(
 		private string $href,
-		private ?string $rel = null,
+		private ?LinkRel $rel = null,
 		private ?string $type = null,
 		private ?string $hreflang = null,
 		private ?string $title = null,
@@ -35,7 +31,7 @@ class Link
 	}
 
 
-	public function getRel(): ?string
+	public function getRel(): ?LinkRel
 	{
 		return $this->rel;
 	}
