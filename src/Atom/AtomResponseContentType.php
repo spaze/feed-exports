@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Spaze\Exports\Bridges\Nette;
+namespace Spaze\Exports\Atom;
 
 enum AtomResponseContentType: string
 {

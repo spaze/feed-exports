@@ -6,8 +6,8 @@ namespace Spaze\Exports\Bridges\Nette\Atom;
 use Nette\Application\Response;
 use Nette\Http\IRequest;
 use Nette\Http\IResponse;
+use Spaze\Exports\Atom\AtomResponseContentType;
 use Spaze\Exports\Atom\Feed;
-use Spaze\Exports\Bridges\Nette\AtomResponseContentType;
 
 /**
  * Atom export response.
