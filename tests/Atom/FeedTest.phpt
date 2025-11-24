@@ -23,7 +23,7 @@ class FeedTest extends TestCase
 	{
 		$now = new DateTimeImmutable('2020-10-20 10:20:20 Europe/Prague');
 
-		$feed = new Feed('https://url', 'Feed Title');
+		$feed = new AtomFeed('https://url', 'Feed Title');
 		$feed->setLinkSelf('https://url');
 		$feed->setUpdated($now);
 		$feed->setAuthor(new Person('foo bar', 'foo@bar.example', 'https://foo.bar.example/'));
@@ -58,7 +58,7 @@ class FeedTest extends TestCase
 
 	public function testToStringEmptyFeed(): void
 	{
-		$feed = new Feed('', '');
+		$feed = new AtomFeed('', '');
 		Assert::same(file_get_contents(__DIR__ . '/feed-empty.xml'), (string)$feed);
 	}
 

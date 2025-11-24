@@ -16,7 +16,7 @@ use XMLWriter;
  *
  * @author Michal Špaček
  */
-class Feed
+class AtomFeed
 {
 
 	private ?string $xml = null;
