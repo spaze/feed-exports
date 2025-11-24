@@ -6,6 +6,7 @@ Atom feed Response and related objects for Nette framework
 ```php
 use Spaze\Exports\Atom\Constructs\Person;
 use Spaze\Exports\Atom\Constructs\Text;
+use Spaze\Exports\Atom\Constructs\TextType;
 use Spaze\Exports\Atom\Elements\Entry;
 use Spaze\Exports\Atom\Feed;
 use Spaze\Exports\Bridges\Nette\AtomResponse;
