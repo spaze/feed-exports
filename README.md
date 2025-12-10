@@ -4,10 +4,10 @@ Atom feed Response and related objects for Nette framework
 ## Nette Framework usage
 
 ```php
-use Spaze\Exports\Atom\Constructs\Person;
-use Spaze\Exports\Atom\Constructs\Text;
-use Spaze\Exports\Atom\Constructs\TextType;
-use Spaze\Exports\Atom\Elements\Entry;
+use Spaze\Exports\Atom\Constructs\AtomPerson;
+use Spaze\Exports\Atom\Constructs\AtomText;
+use Spaze\Exports\Atom\Constructs\AtomTextType;
+use Spaze\Exports\Atom\Elements\AtomEntry;
 use Spaze\Exports\Atom\AtomFeed;
 use Spaze\Exports\Bridges\Nette\AtomResponse;
 
@@ -20,24 +20,24 @@ use Spaze\Exports\Bridges\Nette\AtomResponse;
         $feed = new AtomFeed('https://url', 'Feed Title');
         $feed->setLinkSelf('https://url');
         $feed->setUpdated($now);
-        $feed->setAuthor(new Person('foo bar'));
+        $feed->setAuthor(new AtomPerson('foo bar'));
 
-        $entry = new Entry(
+        $entry = new AtomEntry(
             'https://href/1',
-            new Text('<em>title-1</em>', TextType::Html),
+            new AtomText('<em>title-1</em>', AtomTextType::Html),
             new \DateTimeImmutable('2019-12-20 12:20:20 Europe/Prague'),
             new \DateTimeImmutable('2019-12-16 12:20:20 Europe/Prague')
         );
-        $entry->setContent(new Text('some <strong>content-1</strong>'));
+        $entry->setContent(new AtomText('some <strong>content-1</strong>'));
         $feed->addEntry($entry);
 
-        $entry = new Entry(
+        $entry = new AtomEntry(
             'https://href/2',
-            new Text('title-2', TextType::Text),
+            new AtomText('title-2', AtomTextType::Text),
             new \DateTimeImmutable('2018-12-20 12:20:20 Europe/Prague'),
             new \DateTimeImmutable('2018-12-16 12:20:20 Europe/Prague')
         );
-        $entry->setContent(new Text('other <strong>content-2</strong>'));
+        $entry->setContent(new AtomText('other <strong>content-2</strong>'));
         $feed->addEntry($entry);
 
         $this->sendResponse(new AtomResponse($feed));
