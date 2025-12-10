@@ -3,12 +3,12 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Constructs;
 
-class Text
+class AtomText
 {
 
 	public function __construct(
 		private string $text,
-		private ?TextType $type = null,
+		private ?AtomTextType $type = null,
 	) {
 	}
 
@@ -19,7 +19,7 @@ class Text
 	}
 
 
-	public function getType(): ?TextType
+	public function getType(): ?AtomTextType
 	{
 		return $this->type;
 	}

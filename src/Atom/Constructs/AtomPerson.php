@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Constructs;
 
-class Person
+class AtomPerson
 {
 
 	public function __construct(

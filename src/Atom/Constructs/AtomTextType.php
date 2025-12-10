@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Constructs;
 
-enum TextType: string
+enum AtomTextType: string
 {
 
 	case Text = 'text';
