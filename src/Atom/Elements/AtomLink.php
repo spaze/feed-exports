@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Spaze\Exports\Atom\Elements;
 
-class Link
+class AtomLink
 {
 
 	/**
@@ -11,7 +11,7 @@ class Link
 	 */
 	public function __construct(
 		private string $href,
-		private ?LinkRel $rel = null,
+		private ?AtomLinkRel $rel = null,
 		private ?string $type = null,
 		private ?string $hreflang = null,
 		private ?string $title = null,
@@ -26,7 +26,7 @@ class Link
 	}
 
 
-	public function getRel(): ?LinkRel
+	public function getRel(): ?AtomLinkRel
 	{
 		return $this->rel;
 	}

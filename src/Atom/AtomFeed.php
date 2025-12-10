@@ -4,11 +4,11 @@ declare(strict_types = 1);
 namespace Spaze\Exports\Atom;
 
 use DateTimeInterface;
-use Spaze\Exports\Atom\Constructs\Person;
-use Spaze\Exports\Atom\Constructs\Text;
-use Spaze\Exports\Atom\Elements\Entry;
-use Spaze\Exports\Atom\Elements\Link;
-use Spaze\Exports\Atom\Elements\LinkRel;
+use Spaze\Exports\Atom\Constructs\AtomPerson;
+use Spaze\Exports\Atom\Constructs\AtomText;
+use Spaze\Exports\Atom\Elements\AtomEntry;
+use Spaze\Exports\Atom\Elements\AtomLink;
+use Spaze\Exports\Atom\Elements\AtomLinkRel;
 use XMLWriter;
 
 class AtomFeed
@@ -18,12 +18,12 @@ class AtomFeed
 
 	private XMLWriter $writer;
 
-	/** @var array<string, list<Link>> */
+	/** @var array<string, list<AtomLink>> */
 	private array $links = [];
 
-	private ?Person $author = null;
+	private ?AtomPerson $author = null;
 
-	/** @var list<Entry> */
+	/** @var list<AtomEntry> */
 	private array $entries = [];
 
 
@@ -40,11 +40,11 @@ class AtomFeed
 	 */
 	public function setLinkSelf(string $href): void
 	{
-		$this->addLink(new Link($href, LinkRel::Self));
+		$this->addLink(new AtomLink($href, AtomLinkRel::Self));
 	}
 
 
-	public function setAuthor(Person $author): void
+	public function setAuthor(AtomPerson $author): void
 	{
 		$this->author = $author;
 	}
@@ -62,13 +62,13 @@ class AtomFeed
 	}
 
 
-	public function addLink(Link $link): void
+	public function addLink(AtomLink $link): void
 	{
 		$this->links[$link->getRel()->value ?? ''][] = $link;
 	}
 
 
-	public function addEntry(Entry $entry): void
+	public function addEntry(AtomEntry $entry): void
 	{
 		$this->entries[] = $entry;
 	}
@@ -92,7 +92,7 @@ class AtomFeed
 	}
 
 
-	private function addElementLink(Link $link): void
+	private function addElementLink(AtomLink $link): void
 	{
 		$this->writer->startElement('link');
 		$this->writer->writeAttribute('href', $link->getHref());
@@ -115,7 +115,7 @@ class AtomFeed
 	}
 
 
-	private function addConstructText(string $element, Text $text): void
+	private function addConstructText(string $element, AtomText $text): void
 	{
 		$this->writer->startElement($element);
 		if ($text->getType() !== null) {
@@ -126,7 +126,7 @@ class AtomFeed
 	}
 
 
-	private function addElementEntry(Entry $entry): void
+	private function addElementEntry(AtomEntry $entry): void
 	{
 		$this->writer->startElement('entry');
 		$this->writer->writeElement('id', $entry->getId());
