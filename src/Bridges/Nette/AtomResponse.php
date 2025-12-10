@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Spaze\Exports\Bridges\Nette\Atom;
+namespace Spaze\Exports\Bridges\Nette;
 
 use Nette\Application\Response;
 use Nette\Http\IRequest;
